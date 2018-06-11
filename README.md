@@ -8,7 +8,7 @@ This script can be safely used in a multi-odoo code base server because the defa
 
 ##### 1. Download the script:
 ```
-sudo wget https://raw.githubusercontent.com/mugua/odoo/master/odoo_install.sh
+wget https://raw.githubusercontent.com/mugua/odoo/master/odoo_install.sh
 ```
 ##### 2. Modify the parameters as you wish.
 There are a few things you can configure, this is the most used list:<br/>
@@ -21,9 +21,9 @@ There are a few things you can configure, this is the most used list:<br/>
 
 #### 3. Make the script executable
 ```
-sudo chmod +x odoo_install.sh
+chmod +x odoo_install.sh
 ```
 ##### 4. Execute the script:
 ```
-sudo ./odoo_install.sh
+./odoo_install.sh
 ```
