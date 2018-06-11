@@ -79,14 +79,8 @@ systemctl start postgresql
 #--------------------------------------------------
 yum install wkhtmltopdf
 
-echo -e "\n---- Create ODOO system user ----"
-sudo adduser --system --quiet --shell=/bin/bash --home=$OE_HOME --gecos 'ODOO' --group $OE_USER
-#The user should also be added to the sudo'ers group.
-sudo adduser $OE_USER sudo
-
 echo -e "\n---- Create Log directory ----"
 mkdir /var/log/$OE_USER
-chown $OE_USER:$OE_USER /var/log/$OE_USER
 
 #--------------------------------------------------
 # Install ODOO
@@ -137,13 +131,12 @@ if [ $IS_ENTERPRISE = "True" ]; then
 else
     printf 'addons_path=${OE_HOME_EXT}/addons,${OE_HOME}/custom/addons\n' >> /etc/${OE_CONFIG}.conf
 fi
-sudo chown $OE_USER:$OE_USER /etc/${OE_CONFIG}.conf
+
 sudo chmod 640 /etc/${OE_CONFIG}.conf
 
 echo -e "* Create startup file"
 echo '#!/bin/sh' >> $OE_HOME_EXT/start.sh
-echo 'sudo -u $OE_USER $OE_HOME_EXT --config=/etc/${OE_CONFIG}.conf' >> $OE_HOME_EXT/start.sh
-sudo chmod 755 $OE_HOME_EXT/start.sh
+chmod 755 $OE_HOME_EXT/start.sh
 
 #--------------------------------------------------
 # Adding ODOO as a deamon (initscript)
