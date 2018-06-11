@@ -46,7 +46,7 @@ yum upgrade -y
 echo -e "\n--- Dependencies & Tools --"
 sudo yum install epel-release wget git
 
-echo -e "\n--- Installing Python 3 + pip3 --"
+echo -e "\n--- Installing Python3 --"
 sudo yum install python36
 
 echo -e "\n---- Install python3 packages ----"
@@ -145,7 +145,7 @@ sudo chmod 640 /etc/${OE_CONFIG}.conf
 
 echo -e "* Create startup file"
 sudo su root -c "echo '#!/bin/sh' >> $OE_HOME_EXT/start.sh"
-sudo su root -c "echo 'sudo -u $OE_USER $OE_HOME_EXT/openerp-server --config=/etc/${OE_CONFIG}.conf' >> $OE_HOME_EXT/start.sh"
+sudo su root -c "echo 'sudo -u $OE_USER $OE_HOME_EXT --config=/etc/${OE_CONFIG}.conf' >> $OE_HOME_EXT/start.sh"
 sudo chmod 755 $OE_HOME_EXT/start.sh
 
 #--------------------------------------------------
